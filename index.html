@@ -12,10 +12,7 @@
 
   <title>Class Dinner Registration</title>
 
-
-  <!-- LINE LIFF SDK -->
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-
 
   <style>
 
@@ -23,333 +20,171 @@
       box-sizing: border-box;
     }
 
-
     body {
-
       margin: 0;
-
       padding: 20px;
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         Arial,
         sans-serif;
-
       background: #f5f5f5;
-
       color: #222;
-
     }
-
 
     .card {
-
       width: 100%;
-
       max-width: 480px;
-
       margin: 20px auto;
-
-      background: #ffffff;
-
+      background: white;
       border-radius: 18px;
-
       padding: 28px 22px;
-
-      box-shadow:
-        0 4px 20px rgba(0,0,0,0.08);
-
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
-
 
     h1 {
-
       margin: 0;
-
       text-align: center;
-
       font-size: 25px;
-
     }
-
 
     .subtitle {
-
       text-align: center;
-
       margin-top: 8px;
-
       color: #666;
-
       font-size: 15px;
-
       line-height: 1.6;
-
     }
-
 
     .section {
-
       margin-top: 28px;
-
     }
-
 
     label {
-
       display: block;
-
       font-weight: 600;
-
-      margin-bottom: 7px;
-
+      margin-bottom: 8px;
     }
-
 
     .hint {
-
       font-size: 13px;
-
       color: #777;
-
       margin-bottom: 9px;
-
     }
-
 
     input {
-
       width: 100%;
-
       padding: 14px;
-
       border: 1px solid #ddd;
-
       border-radius: 10px;
-
       font-size: 16px;
-
       outline: none;
-
     }
-
 
     input:focus {
-
       border-color: #06c755;
-
     }
-
 
     .counter {
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       gap: 25px;
-
       margin-top: 12px;
-
     }
-
 
     .counter button {
-
       width: 48px;
-
       height: 48px;
-
       border: none;
-
       border-radius: 50%;
-
-      background: #eeeeee;
-
+      background: #eee;
       font-size: 26px;
-
       cursor: pointer;
-
     }
-
-
-    .counter button:active {
-
-      transform: scale(0.95);
-
-    }
-
 
     .counter span {
-
       width: 45px;
-
       text-align: center;
-
       font-size: 22px;
-
       font-weight: 600;
-
     }
-
 
     .submit {
-
       width: 100%;
-
       margin-top: 30px;
-
       padding: 15px;
-
       border: none;
-
       border-radius: 12px;
-
       background: #06c755;
-
       color: white;
-
       font-size: 17px;
-
       font-weight: 600;
-
       cursor: pointer;
-
     }
-
 
     .submit:disabled {
-
       background: #aaa;
-
       cursor: not-allowed;
-
     }
-
 
     .status {
-
-      margin-top: 15px;
-
-      padding: 12px;
-
-      border-radius: 10px;
-
-      text-align: center;
-
-      font-size: 14px;
-
-      line-height: 1.6;
-
       display: none;
-
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.6;
     }
-
 
     .status.info {
-
       display: block;
-
       background: #f0f7ff;
-
       color: #336699;
-
     }
-
 
     .status.error {
-
       display: block;
-
       background: #fff0f0;
-
       color: #c00000;
-
     }
-
 
     .status.success {
-
       display: block;
-
       background: #edfff2;
-
       color: #137333;
-
     }
 
-
-    .success-area {
-
+    #successArea {
       display: none;
-
       text-align: center;
-
     }
-
 
     .success-icon {
-
       font-size: 55px;
-
       margin-bottom: 10px;
-
     }
-
 
     .success-title {
-
       font-size: 23px;
-
       font-weight: 700;
-
       line-height: 1.5;
-
     }
-
 
     .success-text {
-
       margin-top: 12px;
-
       color: #666;
-
       line-height: 1.7;
-
     }
-
 
     .stats {
-
       margin-top: 22px;
-
       padding: 16px;
-
       background: #f7f7f7;
-
       border-radius: 12px;
-
       line-height: 1.8;
-
-    }
-
-
-    .line-info {
-
-      margin-top: 20px;
-
-      padding: 10px;
-
-      text-align: center;
-
-      font-size: 12px;
-
-      color: #999;
-
     }
 
   </style>
@@ -359,21 +194,17 @@
 
 <body>
 
-
 <div class="card">
 
-
-  <!-- ================================================= -->
-  <!-- 报名表 -->
-  <!-- ================================================= -->
+  <!-- ============================= -->
+  <!-- Registration Form -->
+  <!-- ============================= -->
 
   <div id="formArea">
-
 
     <h1>
       🍽️ Class Dinner
     </h1>
-
 
     <div class="subtitle">
 
@@ -384,8 +215,7 @@
     </div>
 
 
-
-    <!-- 姓名 -->
+    <!-- Name -->
 
     <div class="section">
 
@@ -394,10 +224,8 @@
       </label>
 
       <div class="hint">
-
         請輸入您的姓名 /
         Please enter your name
-
       </div>
 
       <input
@@ -410,8 +238,7 @@
     </div>
 
 
-
-    <!-- 人数 -->
+    <!-- Number -->
 
     <div class="section">
 
@@ -420,12 +247,9 @@
       </label>
 
       <div class="hint">
-
         請選擇參加人數 /
         Please select the number of people
-
       </div>
-
 
       <div class="counter">
 
@@ -436,11 +260,7 @@
           −
         </button>
 
-
-        <span id="people">
-          1
-        </span>
-
+        <span id="people">1</span>
 
         <button
           type="button"
@@ -454,8 +274,7 @@
     </div>
 
 
-
-    <!-- 提交 -->
+    <!-- Submit -->
 
     <button
       id="submitButton"
@@ -476,32 +295,18 @@
       class="status"
     ></div>
 
-
-    <div class="line-info">
-
-      LINE LIFF Registration
-
-    </div>
-
-
   </div>
 
 
+  <!-- ============================= -->
+  <!-- Success -->
+  <!-- ============================= -->
 
-  <!-- ================================================= -->
-  <!-- 报名成功 -->
-  <!-- ================================================= -->
-
-  <div
-    id="successArea"
-    class="success-area"
-  >
-
+  <div id="successArea">
 
     <div class="success-icon">
       ✅
     </div>
-
 
     <div class="success-title">
 
@@ -511,7 +316,6 @@
 
     </div>
 
-
     <div class="success-text">
 
       感謝您的報名！<br>
@@ -520,54 +324,38 @@
 
     </div>
 
-
     <div
       id="stats"
       class="stats"
     ></div>
 
-
   </div>
 
-
 </div>
-
 
 
 <script>
 
 
-/* =====================================================
-   1. LIFF ID
-   ===================================================== */
+/* =========================================
+   LIFF
+   ========================================= */
 
 const LIFF_ID =
   '2011361585-XZv0YkKm';
 
 
-
-/* =====================================================
-   2. Google Apps Script Web App URL
-   =====================================================
-
-   IMPORTANT:
-
-   暂时不要修改这里。
-
-   下一步我们会把你现在的
-   Google Apps Script Web App /exec 地址
-   填到这里。
-
-   ===================================================== */
+/* =========================================
+   Google Apps Script
+   ========================================= */
 
 const GAS_URL =
   'https://script.google.com/macros/s/AKfycby5k4R0RdWJWg6V6epAyCvQJIemt3nuvULJQRVUIiJv8eHgwlCJI_XVhNHMav5CsBUn/exec';
 
 
-
-/* =====================================================
-   3. 全局变量
-   ===================================================== */
+/* =========================================
+   Variables
+   ========================================= */
 
 let people = 1;
 
@@ -576,20 +364,17 @@ let lineUserId = '';
 let liffReady = false;
 
 
-
-/* =====================================================
-   4. 显示状态
-   ===================================================== */
+/* =========================================
+   Status
+   ========================================= */
 
 function showStatus(message, type) {
 
   const status =
     document.getElementById('status');
 
-
   status.textContent =
     message;
-
 
   status.className =
     'status ' + type;
@@ -597,17 +382,23 @@ function showStatus(message, type) {
 }
 
 
+function hideStatus() {
 
-/* =====================================================
-   5. LIFF 初始化
-   ===================================================== */
+  const status =
+    document.getElementById('status');
+
+  status.style.display = 'none';
+
+}
+
+
+/* =========================================
+   LIFF initialization
+   ========================================= */
 
 async function initLIFF() {
 
   try {
-
-
-    /* 检查 LIFF SDK */
 
     if (typeof liff === 'undefined') {
 
@@ -624,16 +415,12 @@ async function initLIFF() {
     );
 
 
-    /* 初始化 LIFF */
-
     await liff.init({
 
       liffId: LIFF_ID
 
     });
 
-
-    /* 检查登录 */
 
     if (!liff.isLoggedIn()) {
 
@@ -642,15 +429,12 @@ async function initLIFF() {
         'info'
       );
 
-
       liff.login();
 
       return;
 
     }
 
-
-    /* 获取 LINE Profile */
 
     const profile =
       await liff.getProfile();
@@ -665,19 +449,9 @@ async function initLIFF() {
     }
 
 
-    /* 保存 User ID */
-
     lineUserId =
       profile.userId;
 
-
-    console.log(
-      'LINE User ID:',
-      lineUserId
-    );
-
-
-    /* LIFF 成功 */
 
     liffReady = true;
 
@@ -690,7 +464,6 @@ async function initLIFF() {
 
     button.disabled = false;
 
-
     button.textContent =
       '送出報名 / Submit Registration';
 
@@ -702,7 +475,6 @@ async function initLIFF() {
 
 
   } catch (error) {
-
 
     console.error(
       'LIFF initialization error:',
@@ -724,10 +496,9 @@ async function initLIFF() {
 }
 
 
-
-/* =====================================================
-   6. 人数调整
-   ===================================================== */
+/* =========================================
+   People counter
+   ========================================= */
 
 function changePeople(amount) {
 
@@ -750,18 +521,157 @@ function changePeople(amount) {
 
   document.getElementById(
     'people'
-  ).textContent = people;
+  ).textContent =
+    people;
 
 }
 
 
+/* =========================================
+   JSONP helper
+   ========================================= */
 
-/* =====================================================
-   7. 提交报名
-   ===================================================== */
+function jsonpRequest(params) {
+
+  return new Promise(
+    function(resolve, reject) {
+
+      const callbackName =
+        'jsonpCallback_' +
+        Date.now() +
+        '_' +
+        Math.floor(
+          Math.random() * 100000
+        );
+
+
+      const script =
+        document.createElement('script');
+
+
+      let finished = false;
+
+
+      const timeout =
+        setTimeout(
+          function() {
+
+            if (finished) {
+              return;
+            }
+
+            finished = true;
+
+            cleanup();
+
+            reject(
+              new Error(
+                'Request timed out. Please try again.'
+              )
+            );
+
+          },
+          15000
+        );
+
+
+      window[callbackName] =
+        function(data) {
+
+          if (finished) {
+            return;
+          }
+
+          finished = true;
+
+          clearTimeout(timeout);
+
+          cleanup();
+
+          resolve(data);
+
+        };
+
+
+      function cleanup() {
+
+        delete window[callbackName];
+
+        if (script.parentNode) {
+
+          script.parentNode.removeChild(
+            script
+          );
+
+        }
+
+      }
+
+
+      const query =
+        new URLSearchParams({
+
+          callback:
+            callbackName,
+
+          action:
+            params.action || '',
+
+          name:
+            params.name || '',
+
+          people:
+            params.people || '',
+
+          userId:
+            params.userId || ''
+
+        });
+
+
+      script.src =
+        GAS_URL +
+        '?' +
+        query.toString();
+
+
+      script.onerror =
+        function() {
+
+          if (finished) {
+            return;
+          }
+
+          finished = true;
+
+          clearTimeout(timeout);
+
+          cleanup();
+
+          reject(
+            new Error(
+              'Unable to connect to Google Apps Script.'
+            )
+          );
+
+        };
+
+
+      document.body.appendChild(
+        script
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   Submit registration
+   ========================================= */
 
 async function submitForm() {
-
 
   const name =
     document
@@ -776,8 +686,6 @@ async function submitForm() {
     );
 
 
-  /* 检查姓名 */
-
   if (!name) {
 
     showStatus(
@@ -789,8 +697,6 @@ async function submitForm() {
 
   }
 
-
-  /* 检查 LIFF */
 
   if (!liffReady || !lineUserId) {
 
@@ -804,26 +710,7 @@ async function submitForm() {
   }
 
 
-  /* 检查 GAS URL */
-
-  if (
-    !GAS_URL ||
-    GAS_URL ===
-    'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'
-  ) {
-
-    showStatus(
-      'Google Apps Script URL 尚未設定。 / Google Apps Script URL is not configured.',
-      'error'
-    );
-
-    return;
-
-  }
-
-
   button.disabled = true;
-
 
   button.textContent =
     'Submitting... / 送出中...';
@@ -838,78 +725,54 @@ async function submitForm() {
   try {
 
 
-    /* ============================================
-       发送数据到 Google Apps Script
-       ============================================ */
-
-    const response =
-      await fetch(
-        GAS_URL,
-        {
-
-          method: 'POST',
-
-          headers: {
-
-            'Content-Type':
-              'text/plain;charset=utf-8'
-
-          },
-
-          body: JSON.stringify({
-
-            name: name,
-
-            people: people,
-
-            userId: lineUserId
-
-          })
-
-        }
-      );
-
-
-    if (!response.ok) {
-
-      throw new Error(
-        'Server returned HTTP ' +
-        response.status
-      );
-
-    }
-
-
     const result =
-      await response.json();
+      await jsonpRequest({
+
+        action:
+          'register',
+
+        name:
+          name,
+
+        people:
+          people,
+
+        userId:
+          lineUserId
+
+      });
 
 
-    /* ============================================
-       检查服务器返回
-       ============================================ */
-
-    if (!result.success) {
+    if (!result || !result.success) {
 
       throw new Error(
-        result.message ||
-        'Registration failed.'
+
+        result &&
+        result.message
+
+          ? result.message
+
+          : 'Registration failed.'
+
       );
 
     }
 
 
-    /* ============================================
-       显示成功
-       ============================================ */
+    /* ===============================
+       Registration successful
+       =============================== */
 
     document.getElementById(
       'formArea'
-    ).style.display = 'none';
+    ).style.display =
+      'none';
 
 
     document.getElementById(
       'successArea'
-    ).style.display = 'block';
+    ).style.display =
+      'block';
 
 
     document.getElementById(
@@ -946,6 +809,7 @@ async function submitForm() {
     showStatus(
 
       error.message ||
+
       'Registration failed. Please try again.',
 
       'error'
@@ -957,10 +821,9 @@ async function submitForm() {
 }
 
 
-
-/* =====================================================
-   8. 页面加载后启动 LIFF
-   ===================================================== */
+/* =========================================
+   Start
+   ========================================= */
 
 window.addEventListener(
   'load',
@@ -973,7 +836,6 @@ window.addEventListener(
 
 
 </script>
-
 
 </body>
 
