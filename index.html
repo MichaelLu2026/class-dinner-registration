@@ -7,12 +7,21 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#06c755"
   >
 
   <title>Class Dinner Registration</title>
 
+
+  <!-- LINE LIFF SDK -->
+
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
 
   <style>
 
@@ -20,171 +29,661 @@
       box-sizing: border-box;
     }
 
+
+    html,
     body {
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      min-height: 100%;
+    }
+
+
+    body {
+
+      padding: 18px;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         Arial,
         sans-serif;
-      background: #f5f5f5;
+
+      background:
+        linear-gradient(
+          180deg,
+          #f3fff7 0%,
+          #f7f7f7 45%,
+          #f5f5f5 100%
+        );
+
       color: #222;
+
     }
+
+
+    /* ===================================
+       Main Card
+       =================================== */
 
     .card {
+
       width: 100%;
+
       max-width: 480px;
-      margin: 20px auto;
-      background: white;
-      border-radius: 18px;
-      padding: 28px 22px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+      margin: 10px auto 30px;
+
+      background: #ffffff;
+
+      border-radius: 22px;
+
+      padding: 28px 22px 25px;
+
+      box-shadow:
+        0 8px 30px rgba(0,0,0,0.08);
+
     }
+
+
+    /* ===================================
+       Header
+       =================================== */
+
+    .header {
+
+      text-align: center;
+
+    }
+
+
+    .icon {
+
+      font-size: 48px;
+
+      line-height: 1;
+
+      margin-bottom: 12px;
+
+    }
+
 
     h1 {
+
       margin: 0;
-      text-align: center;
-      font-size: 25px;
+
+      font-size: 27px;
+
+      font-weight: 750;
+
+      letter-spacing: 0.2px;
+
     }
+
 
     .subtitle {
-      text-align: center;
-      margin-top: 8px;
+
+      margin-top: 9px;
+
       color: #666;
-      font-size: 15px;
-      line-height: 1.6;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
     }
+
+
+    /* ===================================
+       Status badge
+       =================================== */
+
+    .open-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      margin-top: 17px;
+
+      padding: 7px 14px;
+
+      border-radius: 999px;
+
+      background: #eafff0;
+
+      color: #16833b;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+    }
+
+
+    .open-dot {
+
+      width: 8px;
+
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: #06c755;
+
+    }
+
+
+    .closed-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      margin-top: 17px;
+
+      padding: 7px 14px;
+
+      border-radius: 999px;
+
+      background: #fff0f0;
+
+      color: #c62828;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+    }
+
+
+    .closed-dot {
+
+      width: 8px;
+
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: #d93025;
+
+    }
+
+
+    /* ===================================
+       Deadline
+       =================================== */
+
+    .deadline-box {
+
+      margin-top: 18px;
+
+      padding: 15px;
+
+      border-radius: 14px;
+
+      background: #f7f7f7;
+
+      text-align: center;
+
+    }
+
+
+    .deadline-label {
+
+      font-size: 13px;
+
+      color: #777;
+
+    }
+
+
+    .deadline-time {
+
+      margin-top: 4px;
+
+      font-size: 16px;
+
+      font-weight: 700;
+
+      color: #333;
+
+    }
+
+
+    .countdown {
+
+      margin-top: 8px;
+
+      font-size: 13px;
+
+      color: #666;
+
+    }
+
+
+    /* ===================================
+       Section
+       =================================== */
 
     .section {
+
       margin-top: 28px;
+
     }
+
 
     label {
+
       display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
+
+      margin-bottom: 7px;
+
+      font-weight: 700;
+
+      font-size: 15px;
+
     }
+
 
     .hint {
-      font-size: 13px;
-      color: #777;
+
       margin-bottom: 9px;
+
+      color: #777;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
     }
+
+
+    /* ===================================
+       Input
+       =================================== */
 
     input {
+
       width: 100%;
+
       padding: 14px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
+
+      border:
+        1px solid #ddd;
+
+      border-radius: 11px;
+
+      background: #fff;
+
       font-size: 16px;
+
       outline: none;
+
+      -webkit-appearance: none;
+
     }
+
 
     input:focus {
+
       border-color: #06c755;
+
+      box-shadow:
+        0 0 0 3px rgba(6,199,85,0.10);
+
     }
+
+
+    /* ===================================
+       People Counter
+       =================================== */
 
     .counter {
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       gap: 25px;
-      margin-top: 12px;
+
+      margin-top: 13px;
+
     }
+
 
     .counter button {
+
       width: 48px;
+
       height: 48px;
+
       border: none;
+
       border-radius: 50%;
-      background: #eee;
-      font-size: 26px;
+
+      background: #eeeeee;
+
+      color: #333;
+
+      font-size: 27px;
+
+      line-height: 48px;
+
+      padding: 0;
+
       cursor: pointer;
+
+      -webkit-tap-highlight-color:
+        transparent;
+
     }
+
+
+    .counter button:active {
+
+      transform: scale(0.94);
+
+    }
+
 
     .counter span {
+
       width: 45px;
+
       text-align: center;
-      font-size: 22px;
-      font-weight: 600;
+
+      font-size: 23px;
+
+      font-weight: 700;
+
     }
+
+
+    /* ===================================
+       Submit Button
+       =================================== */
 
     .submit {
+
       width: 100%;
+
       margin-top: 30px;
+
       padding: 15px;
+
       border: none;
-      border-radius: 12px;
+
+      border-radius: 13px;
+
       background: #06c755;
+
       color: white;
+
       font-size: 17px;
-      font-weight: 600;
+
+      font-weight: 700;
+
       cursor: pointer;
+
+      -webkit-tap-highlight-color:
+        transparent;
+
+      box-shadow:
+        0 4px 12px rgba(6,199,85,0.20);
+
     }
+
+
+    .submit:active {
+
+      transform: scale(0.99);
+
+    }
+
 
     .submit:disabled {
-      background: #aaa;
+
+      background: #aaaaaa;
+
+      box-shadow: none;
+
       cursor: not-allowed;
+
     }
+
+
+    /* ===================================
+       Status Message
+       =================================== */
 
     .status {
+
       display: none;
+
       margin-top: 15px;
-      padding: 12px;
-      border-radius: 10px;
+
+      padding: 13px;
+
+      border-radius: 11px;
+
       text-align: center;
-      font-size: 14px;
+
+      font-size: 13px;
+
       line-height: 1.6;
+
     }
+
 
     .status.info {
+
       display: block;
+
       background: #f0f7ff;
+
       color: #336699;
+
     }
 
-    .status.error {
-      display: block;
-      background: #fff0f0;
-      color: #c00000;
-    }
 
     .status.success {
+
       display: block;
+
       background: #edfff2;
+
       color: #137333;
+
     }
+
+
+    .status.error {
+
+      display: block;
+
+      background: #fff0f0;
+
+      color: #c62828;
+
+    }
+
+
+    /* ===================================
+       Closed Area
+       =================================== */
+
+    .closed-area {
+
+      display: none;
+
+      margin-top: 28px;
+
+      padding: 22px 15px;
+
+      border-radius: 15px;
+
+      background: #fff7f7;
+
+      text-align: center;
+
+    }
+
+
+    .closed-icon {
+
+      font-size: 43px;
+
+      margin-bottom: 9px;
+
+    }
+
+
+    .closed-title {
+
+      font-size: 21px;
+
+      font-weight: 750;
+
+      line-height: 1.5;
+
+      color: #b71c1c;
+
+    }
+
+
+    .closed-text {
+
+      margin-top: 9px;
+
+      color: #666;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+    }
+
+
+    /* ===================================
+       Success
+       =================================== */
 
     #successArea {
+
       display: none;
+
       text-align: center;
+
     }
+
 
     .success-icon {
-      font-size: 55px;
-      margin-bottom: 10px;
+
+      font-size: 58px;
+
+      line-height: 1;
+
+      margin-bottom: 14px;
+
     }
+
 
     .success-title {
+
       font-size: 23px;
-      font-weight: 700;
+
+      font-weight: 750;
+
       line-height: 1.5;
+
     }
+
 
     .success-text {
+
       margin-top: 12px;
+
       color: #666;
+
+      font-size: 14px;
+
       line-height: 1.7;
+
     }
 
+
     .stats {
+
       margin-top: 22px;
-      padding: 16px;
+
+      padding: 17px;
+
       background: #f7f7f7;
-      border-radius: 12px;
-      line-height: 1.8;
+
+      border-radius: 13px;
+
+      line-height: 1.9;
+
+      font-size: 14px;
+
+    }
+
+
+    .stats-number {
+
+      font-size: 20px;
+
+      font-weight: 750;
+
+    }
+
+
+    /* ===================================
+       Footer
+       =================================== */
+
+    .footer {
+
+      margin-top: 25px;
+
+      text-align: center;
+
+      color: #aaa;
+
+      font-size: 11px;
+
+    }
+
+
+    /* ===================================
+       Mobile
+       =================================== */
+
+    @media (max-width: 380px) {
+
+      body {
+        padding: 12px;
+      }
+
+      .card {
+        padding: 24px 18px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
     }
 
   </style>
@@ -194,119 +693,251 @@
 
 <body>
 
+
 <div class="card">
 
-  <!-- ============================= -->
-  <!-- Registration Form -->
-  <!-- ============================= -->
+
+  <!-- =================================
+       FORM AREA
+       ================================= -->
 
   <div id="formArea">
 
-    <h1>
-      🍽️ Class Dinner
-    </h1>
 
-    <div class="subtitle">
+    <!-- Header -->
 
-      期末考後班級聚餐報名<br>
+    <div class="header">
 
-      Class Dinner Registration
-
-    </div>
-
-
-    <!-- Name -->
-
-    <div class="section">
-
-      <label>
-        姓名 / Name
-      </label>
-
-      <div class="hint">
-        請輸入您的姓名 /
-        Please enter your name
+      <div class="icon">
+        🍽️
       </div>
 
-      <input
-        id="name"
-        type="text"
-        maxlength="50"
-        placeholder="Name / 姓名"
+
+      <h1>
+        Class Dinner
+      </h1>
+
+
+      <div class="subtitle">
+
+        期末考後班級聚餐<br>
+
+        Class Dinner Registration
+
+      </div>
+
+
+      <!-- Registration status -->
+
+      <div
+        id="openBadge"
+        class="open-badge"
       >
 
-    </div>
+        <span class="open-dot"></span>
 
-
-    <!-- Number -->
-
-    <div class="section">
-
-      <label>
-        人數 / Number of People
-      </label>
-
-      <div class="hint">
-        請選擇參加人數 /
-        Please select the number of people
-      </div>
-
-      <div class="counter">
-
-        <button
-          type="button"
-          onclick="changePeople(-1)"
-        >
-          −
-        </button>
-
-        <span id="people">1</span>
-
-        <button
-          type="button"
-          onclick="changePeople(1)"
-        >
-          ＋
-        </button>
+        報名開放中 /
+        Registration Open
 
       </div>
+
 
     </div>
 
 
-    <!-- Submit -->
-
-    <button
-      id="submitButton"
-      class="submit"
-      type="button"
-      onclick="submitForm()"
-      disabled
-    >
-
-      LINE連線中...
-      / Connecting to LINE...
-
-    </button>
-
+    <!-- Deadline -->
 
     <div
-      id="status"
-      class="status"
-    ></div>
+      id="deadlineBox"
+      class="deadline-box"
+    >
+
+      <div class="deadline-label">
+
+        報名截止 /
+        Registration Deadline
+
+      </div>
+
+
+      <div class="deadline-time">
+
+        September 12, 2026
+        · 5:00 PM
+
+      </div>
+
+
+      <div class="countdown">
+
+        <span id="countdown">
+          Loading...
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================
+         Registration Form
+         ================================= -->
+
+
+    <div id="registrationForm">
+
+
+      <!-- Name -->
+
+      <div class="section">
+
+        <label>
+          姓名 / Name
+        </label>
+
+
+        <div class="hint">
+
+          請輸入您的姓名 /
+          Please enter your name
+
+        </div>
+
+
+        <input
+          id="name"
+          type="text"
+          maxlength="50"
+          autocomplete="name"
+          placeholder="Name / 姓名"
+        >
+
+      </div>
+
+
+      <!-- People -->
+
+      <div class="section">
+
+        <label>
+          人數 / Number of People
+        </label>
+
+
+        <div class="hint">
+
+          請選擇參加人數 /
+          Please select the number of people
+
+        </div>
+
+
+        <div class="counter">
+
+
+          <button
+            type="button"
+            onclick="changePeople(-1)"
+            aria-label="Decrease"
+          >
+            −
+          </button>
+
+
+          <span id="people">
+            1
+          </span>
+
+
+          <button
+            type="button"
+            onclick="changePeople(1)"
+            aria-label="Increase"
+          >
+            ＋
+          </button>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- Submit -->
+
+      <button
+        id="submitButton"
+        class="submit"
+        type="button"
+        onclick="submitForm()"
+        disabled
+      >
+
+        LINE連線中...
+        / Connecting to LINE...
+
+      </button>
+
+
+      <!-- Status -->
+
+      <div
+        id="status"
+        class="status"
+      ></div>
+
+
+    </div>
+
+
+    <!-- =================================
+         Closed Area
+         ================================= -->
+
+    <div
+      id="closedArea"
+      class="closed-area"
+    >
+
+      <div class="closed-icon">
+        🔒
+      </div>
+
+
+      <div class="closed-title">
+
+        報名已截止<br>
+
+        Registration Closed
+
+      </div>
+
+
+      <div class="closed-text">
+
+        感謝您的關注。<br>
+
+        The registration deadline has passed.
+
+      </div>
+
+    </div>
+
 
   </div>
 
 
-  <!-- ============================= -->
-  <!-- Success -->
-  <!-- ============================= -->
+  <!-- =================================
+       SUCCESS AREA
+       ================================= -->
 
   <div id="successArea">
+
 
     <div class="success-icon">
       ✅
     </div>
+
 
     <div class="success-title">
 
@@ -316,6 +947,7 @@
 
     </div>
 
+
     <div class="success-text">
 
       感謝您的報名！<br>
@@ -324,12 +956,24 @@
 
     </div>
 
+
     <div
       id="stats"
       class="stats"
     ></div>
 
+
   </div>
+
+
+  <!-- Footer -->
+
+  <div class="footer">
+
+    Class Dinner Registration
+
+  </div>
+
 
 </div>
 
@@ -338,24 +982,37 @@
 
 
 /* =========================================
-   LIFF
+   CONFIGURATION
    ========================================= */
+
 
 const LIFF_ID =
   '2011361585-XZv0YkKm';
 
 
-/* =========================================
-   Google Apps Script
-   ========================================= */
-
 const GAS_URL =
   'https://script.google.com/macros/s/AKfycby5k4R0RdWJWg6V6epAyCvQJIemt3nuvULJQRVUIiJv8eHgwlCJI_XVhNHMav5CsBUn/exec';
 
 
+/*
+ * Registration deadline
+ *
+ * Japan Standard Time
+ *
+ * September 12, 2026
+ * 17:00 JST
+ */
+
+const DEADLINE =
+  new Date(
+    '2026-09-12T17:00:00+09:00'
+  );
+
+
 /* =========================================
-   Variables
+   VARIABLES
    ========================================= */
+
 
 let people = 1;
 
@@ -365,16 +1022,24 @@ let liffReady = false;
 
 
 /* =========================================
-   Status
+   STATUS
    ========================================= */
 
-function showStatus(message, type) {
+
+function showStatus(
+  message,
+  type
+) {
 
   const status =
-    document.getElementById('status');
+    document.getElementById(
+      'status'
+    );
+
 
   status.textContent =
     message;
+
 
   status.className =
     'status ' + type;
@@ -385,122 +1050,160 @@ function showStatus(message, type) {
 function hideStatus() {
 
   const status =
-    document.getElementById('status');
+    document.getElementById(
+      'status'
+    );
 
-  status.style.display = 'none';
+
+  status.style.display =
+    'none';
 
 }
 
 
 /* =========================================
-   LIFF initialization
+   Deadline
    ========================================= */
 
-async function initLIFF() {
 
-  try {
+function isDeadlinePassed() {
 
-    if (typeof liff === 'undefined') {
+  return new Date() >= DEADLINE;
 
-      throw new Error(
-        'LIFF SDK failed to load.'
-      );
-
-    }
+}
 
 
-    showStatus(
-      'LINE連線中... / Connecting to LINE...',
-      'info'
+/* =========================================
+   Countdown
+   ========================================= */
+
+
+function updateCountdown() {
+
+  const countdown =
+    document.getElementById(
+      'countdown'
     );
 
 
-    await liff.init({
-
-      liffId: LIFF_ID
-
-    });
-
-
-    if (!liff.isLoggedIn()) {
-
-      showStatus(
-        '正在登入 LINE... / Logging in to LINE...',
-        'info'
-      );
-
-      liff.login();
-
-      return;
-
-    }
-
-
-    const profile =
-      await liff.getProfile();
-
-
-    if (!profile || !profile.userId) {
-
-      throw new Error(
-        'Unable to get LINE user information.'
-      );
-
-    }
-
-
-    lineUserId =
-      profile.userId;
-
-
-    liffReady = true;
-
-
-    const button =
-      document.getElementById(
-        'submitButton'
-      );
-
-
-    button.disabled = false;
-
-    button.textContent =
-      '送出報名 / Submit Registration';
-
-
-    showStatus(
-      'LINE連線成功，可以開始報名。 / LINE connected. You can register now.',
-      'success'
+  const openBadge =
+    document.getElementById(
+      'openBadge'
     );
 
 
-  } catch (error) {
-
-    console.error(
-      'LIFF initialization error:',
-      error
+  const deadlineBox =
+    document.getElementById(
+      'deadlineBox'
     );
 
 
-    showStatus(
-
-      'LINE連線失敗 / LINE connection failed: ' +
-      (error.message || error),
-
-      'error'
-
+  const registrationForm =
+    document.getElementById(
+      'registrationForm'
     );
+
+
+  const closedArea =
+    document.getElementById(
+      'closedArea'
+    );
+
+
+  if (isDeadlinePassed()) {
+
+
+    countdown.textContent =
+      '報名時間已結束 / Registration has closed';
+
+
+    openBadge.className =
+      'closed-badge';
+
+
+    openBadge.innerHTML =
+
+      '<span class="closed-dot"></span>' +
+
+      '報名已截止 / Registration Closed';
+
+
+    registrationForm.style.display =
+      'none';
+
+
+    closedArea.style.display =
+      'block';
+
+
+    return;
 
   }
 
+
+  const now =
+    new Date();
+
+
+  const difference =
+    DEADLINE.getTime() -
+    now.getTime();
+
+
+  const totalSeconds =
+    Math.floor(
+      difference / 1000
+    );
+
+
+  const days =
+    Math.floor(
+      totalSeconds / 86400
+    );
+
+
+  const hours =
+    Math.floor(
+      (totalSeconds % 86400) / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (totalSeconds % 3600) / 60
+    );
+
+
+  const seconds =
+    totalSeconds % 60;
+
+
+  countdown.textContent =
+
+    '剩餘時間 / Time remaining: ' +
+
+    days + 'd ' +
+
+    hours + 'h ' +
+
+    minutes + 'm ' +
+
+    seconds + 's';
+
 }
 
 
 /* =========================================
-   People counter
+   People Counter
    ========================================= */
 
+
 function changePeople(amount) {
+
+  if (!liffReady) {
+    return;
+  }
+
 
   people += amount;
 
@@ -528,65 +1231,260 @@ function changePeople(amount) {
 
 
 /* =========================================
-   JSONP helper
+   LIFF Initialization
    ========================================= */
 
-function jsonpRequest(params) {
+
+async function initLIFF() {
+
+  try {
+
+
+    if (
+      typeof liff ===
+      'undefined'
+    ) {
+
+      throw new Error(
+        'LIFF SDK failed to load.'
+      );
+
+    }
+
+
+    showStatus(
+
+      'LINE連線中... / Connecting to LINE...',
+
+      'info'
+
+    );
+
+
+    await liff.init({
+
+      liffId:
+        LIFF_ID
+
+    });
+
+
+    /*
+     * Check deadline first
+     */
+
+    if (isDeadlinePassed()) {
+
+      updateCountdown();
+
+      return;
+
+    }
+
+
+    /*
+     * LINE login
+     */
+
+    if (!liff.isLoggedIn()) {
+
+      showStatus(
+
+        '正在登入 LINE... / Logging in to LINE...',
+
+        'info'
+
+      );
+
+
+      liff.login();
+
+      return;
+
+    }
+
+
+    /*
+     * Get LINE profile
+     */
+
+    const profile =
+      await liff.getProfile();
+
+
+    if (
+      !profile ||
+      !profile.userId
+    ) {
+
+      throw new Error(
+
+        'Unable to get LINE user information.'
+
+      );
+
+    }
+
+
+    lineUserId =
+      profile.userId;
+
+
+    liffReady =
+      true;
+
+
+    /*
+     * Enable submit
+     */
+
+    const button =
+      document.getElementById(
+        'submitButton'
+      );
+
+
+    button.disabled =
+      false;
+
+
+    button.textContent =
+
+      '送出報名 / Submit Registration';
+
+
+    showStatus(
+
+      'LINE連線成功，可以開始報名。 / LINE connected. You can register now.',
+
+      'success'
+
+    );
+
+
+  } catch (error) {
+
+
+    console.error(
+      'LIFF initialization error:',
+      error
+    );
+
+
+    showStatus(
+
+      'LINE連線失敗 / LINE connection failed: ' +
+
+      (
+        error.message ||
+        error
+      ),
+
+      'error'
+
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   JSONP Request
+   ========================================= */
+
+
+function jsonpRequest(
+  params
+) {
+
 
   return new Promise(
+
     function(resolve, reject) {
 
+
       const callbackName =
+
         'jsonpCallback_' +
+
         Date.now() +
+
         '_' +
+
         Math.floor(
           Math.random() * 100000
         );
 
 
       const script =
-        document.createElement('script');
+        document.createElement(
+          'script'
+        );
 
 
-      let finished = false;
+      let finished =
+        false;
 
 
       const timeout =
+
         setTimeout(
+
           function() {
+
 
             if (finished) {
               return;
             }
 
-            finished = true;
+
+            finished =
+              true;
+
 
             cleanup();
 
+
             reject(
+
               new Error(
+
                 'Request timed out. Please try again.'
+
               )
+
             );
 
+
           },
+
           15000
+
         );
 
 
       window[callbackName] =
+
         function(data) {
+
 
           if (finished) {
             return;
           }
 
-          finished = true;
 
-          clearTimeout(timeout);
+          finished =
+            true;
+
+
+          clearTimeout(
+            timeout
+          );
+
 
           cleanup();
+
 
           resolve(data);
 
@@ -595,13 +1493,20 @@ function jsonpRequest(params) {
 
       function cleanup() {
 
-        delete window[callbackName];
 
-        if (script.parentNode) {
+        delete window[
+          callbackName
+        ];
 
-          script.parentNode.removeChild(
-            script
-          );
+
+        if (
+          script.parentNode
+        ) {
+
+          script.parentNode
+            .removeChild(
+              script
+            );
 
         }
 
@@ -630,28 +1535,44 @@ function jsonpRequest(params) {
 
 
       script.src =
+
         GAS_URL +
+
         '?' +
+
         query.toString();
 
 
       script.onerror =
+
         function() {
+
 
           if (finished) {
             return;
           }
 
-          finished = true;
 
-          clearTimeout(timeout);
+          finished =
+            true;
+
+
+          clearTimeout(
+            timeout
+          );
+
 
           cleanup();
 
+
           reject(
+
             new Error(
+
               'Unable to connect to Google Apps Script.'
+
             )
+
           );
 
         };
@@ -662,35 +1583,65 @@ function jsonpRequest(params) {
       );
 
     }
+
   );
 
 }
 
 
 /* =========================================
-   Submit registration
+   Submit Registration
    ========================================= */
+
 
 async function submitForm() {
 
+
+  /*
+   * Deadline check
+   */
+
+  if (isDeadlinePassed()) {
+
+    updateCountdown();
+
+    return;
+
+  }
+
+
   const name =
+
     document
-      .getElementById('name')
+
+      .getElementById(
+        'name'
+      )
+
       .value
+
       .trim();
 
 
   const button =
+
     document.getElementById(
       'submitButton'
     );
 
 
+  /*
+   * Name validation
+   */
+
   if (!name) {
 
     showStatus(
+
       '請輸入您的姓名。 / Please enter your name.',
+
       'error'
+
     );
 
     return;
@@ -698,11 +1649,21 @@ async function submitForm() {
   }
 
 
-  if (!liffReady || !lineUserId) {
+  /*
+   * LINE validation
+   */
+
+  if (
+    !liffReady ||
+    !lineUserId
+  ) {
 
     showStatus(
+
       'LINE尚未連線完成。 / LINE is not ready yet.',
+
       'error'
+
     );
 
     return;
@@ -710,15 +1671,25 @@ async function submitForm() {
   }
 
 
-  button.disabled = true;
+  /*
+   * Disable button
+   */
+
+  button.disabled =
+    true;
+
 
   button.textContent =
+
     'Submitting... / 送出中...';
 
 
   showStatus(
+
     '正在提交報名... / Submitting registration...',
+
     'info'
+
   );
 
 
@@ -726,6 +1697,7 @@ async function submitForm() {
 
 
     const result =
+
       await jsonpRequest({
 
         action:
@@ -743,7 +1715,15 @@ async function submitForm() {
       });
 
 
-    if (!result || !result.success) {
+    /*
+     * Check server result
+     */
+
+    if (
+      !result ||
+      !result.success
+    ) {
+
 
       throw new Error(
 
@@ -759,9 +1739,9 @@ async function submitForm() {
     }
 
 
-    /* ===============================
-       Registration successful
-       =============================== */
+    /*
+     * Registration successful
+     */
 
     document.getElementById(
       'formArea'
@@ -779,15 +1759,31 @@ async function submitForm() {
       'stats'
     ).innerHTML =
 
-      '目前報名人數 / Registrations: ' +
+      '<div>' +
+
+      '目前報名人數 / Registrations' +
+
+      '</div>' +
+
+      '<div class="stats-number">' +
 
       result.registrations +
 
+      '</div>' +
+
       '<br>' +
 
-      '目前參加總人數 / Total People: ' +
+      '<div>' +
 
-      result.totalPeople;
+      '目前參加總人數 / Total People' +
+
+      '</div>' +
+
+      '<div class="stats-number">' +
+
+      result.totalPeople +
+
+      '</div>';
 
 
   } catch (error) {
@@ -799,10 +1795,12 @@ async function submitForm() {
     );
 
 
-    button.disabled = false;
+    button.disabled =
+      false;
 
 
     button.textContent =
+
       '送出報名 / Submit Registration';
 
 
@@ -822,20 +1820,46 @@ async function submitForm() {
 
 
 /* =========================================
-   Start
+   Page Initialization
    ========================================= */
 
+
 window.addEventListener(
+
   'load',
+
   function() {
+
+
+    /*
+     * Start countdown
+     */
+
+    updateCountdown();
+
+
+    setInterval(
+
+      updateCountdown,
+
+      1000
+
+    );
+
+
+    /*
+     * Initialize LIFF
+     */
 
     initLIFF();
 
   }
+
 );
 
 
 </script>
+
 
 </body>
 
