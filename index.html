@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Class Dinner Registration</title>
+
+
+  <!-- LINE LIFF SDK -->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+
+      margin: 0;
+
+      padding: 20px;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      background: #f5f5f5;
+
+      color: #222;
+
+    }
+
+
+    .card {
+
+      width: 100%;
+
+      max-width: 480px;
+
+      margin: 20px auto;
+
+      background: #ffffff;
+
+      border-radius: 18px;
+
+      padding: 28px 22px;
+
+      box-shadow:
+        0 4px 20px rgba(0,0,0,0.08);
+
+    }
+
+
+    h1 {
+
+      margin: 0;
+
+      text-align: center;
+
+      font-size: 25px;
+
+    }
+
+
+    .subtitle {
+
+      text-align: center;
+
+      margin-top: 8px;
+
+      color: #666;
+
+      font-size: 15px;
+
+      line-height: 1.6;
+
+    }
+
+
+    .section {
+
+      margin-top: 28px;
+
+    }
+
+
+    label {
+
+      display: block;
+
+      font-weight: 600;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .hint {
+
+      font-size: 13px;
+
+      color: #777;
+
+      margin-bottom: 9px;
+
+    }
+
+
+    input {
+
+      width: 100%;
+
+      padding: 14px;
+
+      border: 1px solid #ddd;
+
+      border-radius: 10px;
+
+      font-size: 16px;
+
+      outline: none;
+
+    }
+
+
+    input:focus {
+
+      border-color: #06c755;
+
+    }
+
+
+    .counter {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 25px;
+
+      margin-top: 12px;
+
+    }
+
+
+    .counter button {
+
+      width: 48px;
+
+      height: 48px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: #eeeeee;
+
+      font-size: 26px;
+
+      cursor: pointer;
+
+    }
+
+
+    .counter button:active {
+
+      transform: scale(0.95);
+
+    }
+
+
+    .counter span {
+
+      width: 45px;
+
+      text-align: center;
+
+      font-size: 22px;
+
+      font-weight: 600;
+
+    }
+
+
+    .submit {
+
+      width: 100%;
+
+      margin-top: 30px;
+
+      padding: 15px;
+
+      border: none;
+
+      border-radius: 12px;
+
+      background: #06c755;
+
+      color: white;
+
+      font-size: 17px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+    }
+
+
+    .submit:disabled {
+
+      background: #aaa;
+
+      cursor: not-allowed;
+
+    }
+
+
+    .status {
+
+      margin-top: 15px;
+
+      padding: 12px;
+
+      border-radius: 10px;
+
+      text-align: center;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+
+      display: none;
+
+    }
+
+
+    .status.info {
+
+      display: block;
+
+      background: #f0f7ff;
+
+      color: #336699;
+
+    }
+
+
+    .status.error {
+
+      display: block;
+
+      background: #fff0f0;
+
+      color: #c00000;
+
+    }
+
+
+    .status.success {
+
+      display: block;
+
+      background: #edfff2;
+
+      color: #137333;
+
+    }
+
+
+    .success-area {
+
+      display: none;
+
+      text-align: center;
+
+    }
+
+
+    .success-icon {
+
+      font-size: 55px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .success-title {
+
+      font-size: 23px;
+
+      font-weight: 700;
+
+      line-height: 1.5;
+
+    }
+
+
+    .success-text {
+
+      margin-top: 12px;
+
+      color: #666;
+
+      line-height: 1.7;
+
+    }
+
+
+    .stats {
+
+      margin-top: 22px;
+
+      padding: 16px;
+
+      background: #f7f7f7;
+
+      border-radius: 12px;
+
+      line-height: 1.8;
+
+    }
+
+
+    .line-info {
+
+      margin-top: 20px;
+
+      padding: 10px;
+
+      text-align: center;
+
+      font-size: 12px;
+
+      color: #999;
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+
+  <!-- ================================================= -->
+  <!-- 报名表 -->
+  <!-- ================================================= -->
+
+  <div id="formArea">
+
+
+    <h1>
+      🍽️ Class Dinner
+    </h1>
+
+
+    <div class="subtitle">
+
+      期末考後班級聚餐報名<br>
+
+      Class Dinner Registration
+
+    </div>
+
+
+
+    <!-- 姓名 -->
+
+    <div class="section">
+
+      <label>
+        姓名 / Name
+      </label>
+
+      <div class="hint">
+
+        請輸入您的姓名 /
+        Please enter your name
+
+      </div>
+
+      <input
+        id="name"
+        type="text"
+        maxlength="50"
+        placeholder="Name / 姓名"
+      >
+
+    </div>
+
+
+
+    <!-- 人数 -->
+
+    <div class="section">
+
+      <label>
+        人數 / Number of People
+      </label>
+
+      <div class="hint">
+
+        請選擇參加人數 /
+        Please select the number of people
+
+      </div>
+
+
+      <div class="counter">
+
+        <button
+          type="button"
+          onclick="changePeople(-1)"
+        >
+          −
+        </button>
+
+
+        <span id="people">
+          1
+        </span>
+
+
+        <button
+          type="button"
+          onclick="changePeople(1)"
+        >
+          ＋
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- 提交 -->
+
+    <button
+      id="submitButton"
+      class="submit"
+      type="button"
+      onclick="submitForm()"
+      disabled
+    >
+
+      LINE連線中...
+      / Connecting to LINE...
+
+    </button>
+
+
+    <div
+      id="status"
+      class="status"
+    ></div>
+
+
+    <div class="line-info">
+
+      LINE LIFF Registration
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- ================================================= -->
+  <!-- 报名成功 -->
+  <!-- ================================================= -->
+
+  <div
+    id="successArea"
+    class="success-area"
+  >
+
+
+    <div class="success-icon">
+      ✅
+    </div>
+
+
+    <div class="success-title">
+
+      報名成功！<br>
+
+      Registration Successful!
+
+    </div>
+
+
+    <div class="success-text">
+
+      感謝您的報名！<br>
+
+      Thank you for registering!
+
+    </div>
+
+
+    <div
+      id="stats"
+      class="stats"
+    ></div>
+
+
+  </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   1. LIFF ID
+   ===================================================== */
+
+const LIFF_ID =
+  '2011361585-XZv0YkKm';
+
+
+
+/* =====================================================
+   2. Google Apps Script Web App URL
+   =====================================================
+
+   IMPORTANT:
+
+   暂时不要修改这里。
+
+   下一步我们会把你现在的
+   Google Apps Script Web App /exec 地址
+   填到这里。
+
+   ===================================================== */
+
+const GAS_URL =
+  'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+
+
+/* =====================================================
+   3. 全局变量
+   ===================================================== */
+
+let people = 1;
+
+let lineUserId = '';
+
+let liffReady = false;
+
+
+
+/* =====================================================
+   4. 显示状态
+   ===================================================== */
+
+function showStatus(message, type) {
+
+  const status =
+    document.getElementById('status');
+
+
+  status.textContent =
+    message;
+
+
+  status.className =
+    'status ' + type;
+
+}
+
+
+
+/* =====================================================
+   5. LIFF 初始化
+   ===================================================== */
+
+async function initLIFF() {
+
+  try {
+
+
+    /* 检查 LIFF SDK */
+
+    if (typeof liff === 'undefined') {
+
+      throw new Error(
+        'LIFF SDK failed to load.'
+      );
+
+    }
+
+
+    showStatus(
+      'LINE連線中... / Connecting to LINE...',
+      'info'
+    );
+
+
+    /* 初始化 LIFF */
+
+    await liff.init({
+
+      liffId: LIFF_ID
+
+    });
+
+
+    /* 检查登录 */
+
+    if (!liff.isLoggedIn()) {
+
+      showStatus(
+        '正在登入 LINE... / Logging in to LINE...',
+        'info'
+      );
+
+
+      liff.login();
+
+      return;
+
+    }
+
+
+    /* 获取 LINE Profile */
+
+    const profile =
+      await liff.getProfile();
+
+
+    if (!profile || !profile.userId) {
+
+      throw new Error(
+        'Unable to get LINE user information.'
+      );
+
+    }
+
+
+    /* 保存 User ID */
+
+    lineUserId =
+      profile.userId;
+
+
+    console.log(
+      'LINE User ID:',
+      lineUserId
+    );
+
+
+    /* LIFF 成功 */
+
+    liffReady = true;
+
+
+    const button =
+      document.getElementById(
+        'submitButton'
+      );
+
+
+    button.disabled = false;
+
+
+    button.textContent =
+      '送出報名 / Submit Registration';
+
+
+    showStatus(
+      'LINE連線成功，可以開始報名。 / LINE connected. You can register now.',
+      'success'
+    );
+
+
+  } catch (error) {
+
+
+    console.error(
+      'LIFF initialization error:',
+      error
+    );
+
+
+    showStatus(
+
+      'LINE連線失敗 / LINE connection failed: ' +
+      (error.message || error),
+
+      'error'
+
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   6. 人数调整
+   ===================================================== */
+
+function changePeople(amount) {
+
+  people += amount;
+
+
+  if (people < 1) {
+
+    people = 1;
+
+  }
+
+
+  if (people > 10) {
+
+    people = 10;
+
+  }
+
+
+  document.getElementById(
+    'people'
+  ).textContent = people;
+
+}
+
+
+
+/* =====================================================
+   7. 提交报名
+   ===================================================== */
+
+async function submitForm() {
+
+
+  const name =
+    document
+      .getElementById('name')
+      .value
+      .trim();
+
+
+  const button =
+    document.getElementById(
+      'submitButton'
+    );
+
+
+  /* 检查姓名 */
+
+  if (!name) {
+
+    showStatus(
+      '請輸入您的姓名。 / Please enter your name.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  /* 检查 LIFF */
+
+  if (!liffReady || !lineUserId) {
+
+    showStatus(
+      'LINE尚未連線完成。 / LINE is not ready yet.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  /* 检查 GAS URL */
+
+  if (
+    !GAS_URL ||
+    GAS_URL ===
+    'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'
+  ) {
+
+    showStatus(
+      'Google Apps Script URL 尚未設定。 / Google Apps Script URL is not configured.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  button.disabled = true;
+
+
+  button.textContent =
+    'Submitting... / 送出中...';
+
+
+  showStatus(
+    '正在提交報名... / Submitting registration...',
+    'info'
+  );
+
+
+  try {
+
+
+    /* ============================================
+       发送数据到 Google Apps Script
+       ============================================ */
+
+    const response =
+      await fetch(
+        GAS_URL,
+        {
+
+          method: 'POST',
+
+          headers: {
+
+            'Content-Type':
+              'text/plain;charset=utf-8'
+
+          },
+
+          body: JSON.stringify({
+
+            name: name,
+
+            people: people,
+
+            userId: lineUserId
+
+          })
+
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        'Server returned HTTP ' +
+        response.status
+      );
+
+    }
+
+
+    const result =
+      await response.json();
+
+
+    /* ============================================
+       检查服务器返回
+       ============================================ */
+
+    if (!result.success) {
+
+      throw new Error(
+        result.message ||
+        'Registration failed.'
+      );
+
+    }
+
+
+    /* ============================================
+       显示成功
+       ============================================ */
+
+    document.getElementById(
+      'formArea'
+    ).style.display = 'none';
+
+
+    document.getElementById(
+      'successArea'
+    ).style.display = 'block';
+
+
+    document.getElementById(
+      'stats'
+    ).innerHTML =
+
+      '目前報名人數 / Registrations: ' +
+
+      result.registrations +
+
+      '<br>' +
+
+      '目前參加總人數 / Total People: ' +
+
+      result.totalPeople;
+
+
+  } catch (error) {
+
+
+    console.error(
+      'Registration error:',
+      error
+    );
+
+
+    button.disabled = false;
+
+
+    button.textContent =
+      '送出報名 / Submit Registration';
+
+
+    showStatus(
+
+      error.message ||
+      'Registration failed. Please try again.',
+
+      'error'
+
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   8. 页面加载后启动 LIFF
+   ===================================================== */
+
+window.addEventListener(
+  'load',
+  function() {
+
+    initLIFF();
+
+  }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
